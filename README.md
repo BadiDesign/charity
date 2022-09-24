@@ -1,4 +1,4 @@
-# GoCardless sample application
+# Badroud Patients Charity
 
 ## Setup
 
