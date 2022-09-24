@@ -13,7 +13,7 @@ Create a virtual environment to install dependencies in and activate it:
 
 ```sh
 $ virtualenv2 --no-site-packages env
-$ source env/bin/activate
+$ env/bin/activate.bat
 ```
 
 Then install the dependencies:
@@ -30,4 +30,4 @@ Once `pip` has finished downloading the dependencies:
 (env)$ python manage.py migrate
 (env)$ python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/gocardless/`.
+And navigate to `http://127.0.0.1:8000/`.
