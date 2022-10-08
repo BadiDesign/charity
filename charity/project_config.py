@@ -2,6 +2,9 @@ import os
 from datetime import timedelta
 from rest_framework.reverse import reverse_lazy
 
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 LOGIN_URL = reverse_lazy('custom_login')
 PROJECT_NAME = 'خباد'
 CONFIG_JSON = {

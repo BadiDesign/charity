@@ -24,13 +24,12 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'badi_user',
+    'badi_ticket',
     'rest_framework',
     'widget_tweaks',
     'badi_utils',
     'django_filters',
-    'user.apps.UserConfig',
-    'setting.apps.SettingConfig',
-    'wallet.apps.WalletConfig',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -80,8 +79,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
-AUTH_USER_MODEL = 'user.User'
-LOG_MODEL = 'user.Log'
+AUTH_USER_MODEL = 'badi_user.User'
+LOG_MODEL = 'badi_user.Log'
 LOGIN_REDIRECT_URL = gettext_noop('/')
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
