@@ -1,3 +1,9 @@
+:root {
+    --primary: #0a923f;
+    --hover-primary: #037a31;
+    --sec-primary: #dcffdf;
+    --trans-primary: rgb(87 255 54 / 10%);
+}
 .login.login-2 .login-aside .aside-img {
   min-height: 450px; }
 

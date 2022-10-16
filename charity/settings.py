@@ -1,4 +1,9 @@
 import os
+
+from badi_utils.email import Email
+from badi_utils.sms import IpPanelSms
+from badi_utils.validations import PersianValidations, BadiValidators
+
 from .project_config import *
 from django.utils.translation import ugettext_lazy as _, gettext_noop
 from dotenv import load_dotenv
@@ -26,9 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'badi_user',
     'badi_ticket',
+    'badi_wallet',
+    'badi_utils',
     'rest_framework',
     'widget_tweaks',
-    'badi_utils',
     'django_filters',
 ]
 SITE_ID = 1
@@ -106,3 +112,48 @@ TIME_INPUT_FORMATS = [
     '%H:%M',  # '14:30',
 ]
 JWT_AUTH = JWT_AUTH
+
+BADI_AUTH_CONFIG = {
+    "resend": {
+        "is_active": True,
+        "class": IpPanelSms,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+        "errors": {
+            "404": _("No active user found")
+        }
+    },
+    "verify": {
+        "is_active": True,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+    },
+    "register": {
+        "is_active": True,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+        "email_active": False,
+        "mobile_number_active": True,
+        "mobile_number_validator": PersianValidations.phone_number,
+        "email_panel": PersianValidations.phone_number,
+        "sms_panel": IpPanelSms,
+        "username_validator": BadiValidators.username,
+    },
+    "login": {
+        "is_active": True,
+        "type": "username_password",
+        "auto_create": True,
+        "login_to_django": True,
+        "user_key": "username",
+        "email_panel": Email.send_login_token,
+        "sms_panel": IpPanelSms,
+        "username_validator": PersianValidations.phone_number,
+    },
+    "sms": {
+        "is_active": True,
+        "sms_panel": IpPanelSms,
+    },
+}

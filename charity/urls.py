@@ -9,9 +9,12 @@ from charity.views import *
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('dashboard/user/', include('badi_user.ui.urls')),
-                  path('dashboard/ticket/', include('badi_ticket.urls')),
+                  path('dashboard/', include('badi_user.ui.urls')),
+                  path('dashboard/', include('badi_ticket.urls')),
+                  path('dashboard/wallet/', include('badi_wallet.ui.urls')),
                   path('api/v1/', include('badi_user.api.routers')),
+                  path('api/v1/', include('badi_wallet.api.routers')),
+                  path('api/v1/', include('badi_ticket.routers')),
                   path('dashboard', DashboardView.as_view(), name='dashboard'),
                   # path('select2/', include('plugins.select2_urls')),
                   # path('', include('plugins.sitemap_urls')),
